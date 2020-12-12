@@ -5,12 +5,30 @@ body{
 #calculator-body{
     background-color: rgb(221, 219, 219);
     margin: auto;
-    padding-top:20px;
+    padding-top:10px;
     width: 320px;
     height: 400px;
     border-radius: 5px 5px 30px 5px;
     box-shadow: 0 0 50px #333;
 }
+
+#topLine{
+    height: 2px;
+    width: 320px;
+    background-color: rgb(221, 219, 219);
+    margin-bottom: 10px;
+    box-shadow: inset 0px 0px 5px #c7c7c7;
+    
+}
+
+#bottomLine{
+    height: 1px;
+    width: 320px;
+    background-color: rgb(209, 206, 206);
+    margin-bottom: 10px;
+    /* box-shadow: 50px 50px 50px rgb(0, 0, 0); */
+}
+
 
 #batteryHolder{
     width: 40px;
@@ -33,14 +51,15 @@ body{
 
 #screenDisplayBorder{
     display: flex;
-    border: 10px solid grey;
+    border: 1px solid grey;
     border-radius: 5px 5px 25px 5px;
     margin: auto;
     margin-bottom: 5px;
     width: 280px;
-    height: 140px;
+    height: 155px;
     background-color: grey;
     flex-direction: row;
+    box-shadow: inset 0px 0px 5px #c7c7c7;
 }
 
 #screenDisplay{
