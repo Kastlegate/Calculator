@@ -5,11 +5,31 @@ body{
 #calculator-body{
     background-color: rgb(221, 219, 219);
     margin: auto;
-    padding-top:10px;
     width: 320px;
-    height: 400px;
+    height: 450px;
     border-radius: 5px 5px 30px 5px;
     box-shadow: 0 0 50px #333;
+}
+
+#doubleLines{
+    display: flex;
+    width: 320px;
+}
+
+#line1{
+    background-color: rgb(221, 219, 219);
+    height: 10px;
+    width: 2px;
+    margin-left: 7%;
+    box-shadow: inset 0px 0px 5px #c7c7c7;
+}
+
+#line2{
+    background-color: rgb(221, 219, 219);
+    height: 10px;
+    width: 2px;
+    margin-left: 85%;
+    box-shadow: inset 0px 0px 5px #c7c7c7;
 }
 
 #topLine{
@@ -33,6 +53,7 @@ body{
 #batteryHolder{
     width: 40px;
     padding-top: 40px;
+    margin-left: 5px;
 }
 
 #batteryLight{
@@ -46,7 +67,8 @@ body{
 #battery{
     font-size: 6px;
     margin: auto;
-    padding-top: 2px;
+    padding-top: 4px;
+    color: rgb(238, 236, 236);
 }
 
 #screenDisplayBorder{
@@ -62,25 +84,40 @@ body{
     box-shadow: inset 0px 0px 5px #c7c7c7;
 }
 
+
+
 #screenDisplay{
     background-color: rgb(10, 146, 5);    
     width: 200px;
     height: 135px;
+    margin-top: 10px;
+    margin-left: -3px;
     /* margin: auto; */
 }
 
 #logo{
-    
+    margin-bottom: 10px;
+    margin-left: 6%;
+    display: flex;
+}
+
+#TM{
+    font-size: 50%;
+    margin-left: 1px;
+    margin-top: 7px;
 }
 
 #buttonHolder{
     /* background-color: rgb(145, 145, 145); */
     margin: auto;
-    width: 230px;
+    width: 220px;
     flex-direction: row; 
     padding: 5px;
-    padding-top: 25px;  
-       
+    padding-left: 15px;
+    /* padding-top: 25px;   */
+    box-shadow: inset 0px 0px 5px #c7c7c7;
+    border-radius: 20px 20px 20px 20px;
+    margin-bottom: 30px;
 }
 
 .buttons{
@@ -94,4 +131,46 @@ body{
     font-size: 16px;
     border-color: #acacac;
     border-radius: 40px 40px 40px 40px;
-} 
+    outline:none;
+}
+
+#powerButtons{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 120px;
+}
+button::-moz-selection { 
+    border: 100;
+    border-color: blue;
+
+}
+
+ #select{
+    width: 30px;
+    height: 7px;
+    transform: rotate(-30deg);
+    background-color: grey;   
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 1px 1px 1px 6px #d3d2d2;
+    font-size: 50%;
+    color: rgb(77, 52, 218);
+    text-align: right;
+    outline:none;
+    padding:0px;
+    font-stretch: wider;
+}
+
+#start{
+    width: 30px;
+    height: 7px;
+    transform: rotate(-30deg);
+    background-color: grey;
+    border-radius: 10px 10px 10px 10px;
+    margin-left: 10px;
+    box-shadow: 1px 1px 1px 6px #d3d2d2;
+    font-size: 50%;
+    color: rgb(77, 52, 218);    
+    text-decoration: none;
+    outline:none;
+    padding:0px;
+}
