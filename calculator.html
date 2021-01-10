@@ -35,7 +35,7 @@
       <div id="buttonHolder">
             <button class="buttons">C</button>
             <button class="buttons">CE</button>
-            <button id="backSpace" class="buttons">x</button>
+            <button id="backSpace" class="buttons">&lsaquo;</button>
             <button class="buttons">/</button>
             <button class="buttons">7</button>
             <button class="buttons">8</button>
@@ -56,8 +56,13 @@
           </div>
 
           <div id="powerButtons">
-            <button id="select"><p>RESET</p></button>
-              <button id="start"><p>POWER</p></button>
+            <div id="selectIndentation"></div>
+            <button id="select"><p class="startSelectText"><b>RESET</b></p></button>
+            
+            <div id="startContainer">
+              <button id="start"><p class="startSelectText"><b>POWER</b></p></button>
+              <div id="startIndentation"></div>
+            </div>
           </div>
 
   </div>
