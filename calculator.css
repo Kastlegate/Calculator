@@ -11,6 +11,7 @@ body{
     box-shadow: 0 0 50px #333;
 }
 
+/* lines at the top[ of the calculator */
 #doubleLines{
     display: flex;
     width: 320px;
@@ -49,7 +50,7 @@ body{
     /* box-shadow: 50px 50px 50px rgb(0, 0, 0); */
 }
 
-
+/* container for the battery light and text */
 #batteryHolder{
     width: 40px;
     padding-top: 40px;
@@ -59,11 +60,13 @@ body{
 #batteryLight{
     width: 5px;
     height: 5px;
-    background-color: green;
+    background-color: rgb(165, 164, 164);
+    /* background-color: green; */
     border-radius: 5px 5px 5px 5px;
     margin-left: 20%;
 }
 
+/* Text for the batter light */
 #battery{
     font-size: 6px;
     margin: auto;
@@ -71,6 +74,7 @@ body{
     color: rgb(238, 236, 236);
 }
 
+/* The grey border around the screen */
 #screenDisplayBorder{
     display: flex;
     border: 1px solid grey;
@@ -84,15 +88,45 @@ body{
     box-shadow: inset 0px 0px 7px #c7c7c7;
 }
 
-
-
-#screenDisplay{
-    background-color: rgb(10, 146, 5);    
+/* #screenDisplay{
+    background-color: rgb(5, 126, 1);    
     width: 200px;
     height: 135px;
     margin-top: 10px;
     margin-left: -3px;
-    /* margin: auto; */
+    
+} */
+
+/* Container holding the two divs that make up the top and bottom of the screen */
+#screenDisplayContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+/* the actual screen for the calculator */
+#screenDisplay1{
+    background-color: rgb(5, 126, 1); 
+    width: 200px;
+    height: 45px;
+    margin-top: 10px;
+    margin-left: -3px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+#screenDisplay2{
+    background-color: rgb(5, 126, 1);    
+    width: 200px;
+    height: 90px;
+    margin-left: -3px;
+    font-size: 200%;
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+}
+
+#screenDisplayText{
+    float: right;
 }
 
 #logo{
@@ -107,6 +141,7 @@ body{
     margin-top: 7px;
 }
 
+/* container for the calculator buttons */
 #buttonHolder{
     /* background-color: rgb(145, 145, 145); */
     margin: auto;
