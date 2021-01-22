@@ -11,7 +11,7 @@ body{
     box-shadow: 0 0 50px #333;
 }
 
-/* lines at the top[ of the calculator */
+/* lines at the top of the calculator */
 #doubleLines{
     display: flex;
     width: 320px;
@@ -120,13 +120,14 @@ body{
     height: 90px;
     margin-left: -3px;
     font-size: 200%;
+    
     display: flex;
-    justify-content: right;
-    align-items: flex-end;
+    justify-content: flex-end !important;
+    align-items: flex-end !important;
 }
 
 #screenDisplayText{
-    float: right;
+    float: right !important;
 }
 
 #logo{
