@@ -1,4 +1,4 @@
-//variables 
+//variables from the html elements
 let powerButton = document.getElementById("start");
 let resetButton = document.getElementById("select");
 let button1 = document.getElementById("1");
@@ -13,26 +13,32 @@ let button9 = document.getElementById("9");
 let button0 = document.getElementById("0");
 let buttonCE = document.getElementById("CE");
 let buttonC = document.getElementById("C");
-let buttonPlus = document.getElementById("+");
-let buttonMinus = document.getElementById("-");
+let buttonAdd = document.getElementById("+");
+let buttonSubtract = document.getElementById("-");
 let buttonMultiply = document.getElementById("*");
 let buttonDivide = document.getElementById("/");
 let buttonEquals = document.getElementById("=");
 let buttonPoint = document.getElementById(".");
 let buttonNegative = document.getElementById("+/-");
 let buttonDelete = document.getElementById("del");
+// let topScreenText = document.getElementById("screenTextTop").textContent;
+// let bottomScreenText = document.getElementById("screenTextBottom").textContent;
 
+//variables
 let powerState = 0;
 let batteryLife = 0;
-let number1 = 0;
-let number2 = 0;
-let number3 = 0;
+let defaultBottomNumber = 0;
+let operatorClicked = false;
+let number1 = "";
+let number2 = "";
+let number3 = "";
+let operator;
 
 // creating audio variable
 const bootSound = new Audio('sounds/gbstart.mp3');
 
 
-//creating event listerners for the buttons
+//creating event listeners for the buttons
 powerButton.addEventListener("click", powerButtonClicked);
 resetButton.addEventListener("click", resetButtonClicked);
 button1.addEventListener("click", button1Clicked);
@@ -45,8 +51,8 @@ button7.addEventListener("click", button7Clicked);
 button8.addEventListener("click", button8Clicked);
 button9.addEventListener("click", button9Clicked);
 button0.addEventListener("click", button0Clicked);
-buttonPlus.addEventListener("click", buttonPlusClicked);
-buttonMinus.addEventListener("click", buttonMinusClicked);
+buttonAdd.addEventListener("click", buttonAddClicked);
+buttonSubtract.addEventListener("click", buttonSubtractClicked);
 buttonDivide.addEventListener("click", buttonDivideClicked);
 buttonMultiply.addEventListener("click", buttonMultiplyClicked);
 buttonEquals.addEventListener("click", buttonEqualsClicked);
@@ -56,24 +62,80 @@ buttonCE.addEventListener("click", buttonCEClicked);
 buttonC.addEventListener("click", buttonCClicked);
 buttonDelete.addEventListener("click", buttonDeleteClicked);
 
+//function that takes an argument for each operator on the calculator
+function operatorUsed(operatorButtonPressed)
+{
+    //switch statement to take the operator button pressed
+    //on the calculator and change the operator variable accordingly
+    switch(operatorButtonPressed){
+        case "+":
+            operator = "+";
+            break;
+
+        case "-":
+            operator = "-";
+            break;
+
+        case "*":
+            operator = "*";
+            break;
+
+        case "/":
+                operator = "/";
+                break;
+    }
+
+    operatorClicked = true;
+    document.getElementById("screenTextTop").textContent = number1 + " " + operator + " " + number2;
+} 
+
+// function to take the current operator and use the appropriate 
+// math function with the two numbers
+function operate()
+{
+    switch(operator)
+    {
+        case "+":
+                number3 = add(number1, number2);
+                break;
+
+            case "-":
+                number3 = subtract(number1, number2);
+                break;
+
+            case "*":
+                number3 = multiply(number1, number2);
+                break;
+
+            case "/":
+                number3 = divide(number1, number2);
+                break;
+    }
+
+    document.getElementById("screenTextTop").textContent = number1 + " " + operator + " " + number2 + " =";
+    document.getElementById("screenTextBottom").textContent = number3;
+}
+
+// functions for the buttons when clicked
 function button1Clicked()
 {
     if (powerState == 1)
     {
         batteryCheck()
         console.log("number button 1 pressed")
-        number1 = 1;
-        if(number3 == 0)
-        {
-            number3 = number1;
-        } 
-        else 
-        {
-            number3 = "" + number3 + number1;
-        }  
         
-        console.log(number3 + number1)
-        document.getElementById('screenTextBottom').textContent = number3;
+        if (operatorClicked == false)
+        {
+            number1 += 1;        
+            document.getElementById("screenTextBottom").textContent = number1;
+        }
+
+        else if (operatorClicked == true)
+        {
+            number2 += 1;        
+            document.getElementById("screenTextBottom").textContent = number2;
+        }
+
     }
 }
 
@@ -81,8 +143,20 @@ function button2Clicked()
 {
     if (powerState == 1)
     {
-        batteryCheck()
-        console.log("number button 2 pressed")
+            batteryCheck()
+            console.log("number button 2 pressed")
+            
+            if (operatorClicked == false)
+            {
+                number1 += 2;        
+                document.getElementById("screenTextBottom").textContent = number1;
+            }
+
+            else if (operatorClicked == true)
+            {
+                number2 += 2;        
+                document.getElementById("screenTextBottom").textContent = number2;
+            }
     }
 }
 
@@ -90,8 +164,25 @@ function button3Clicked()
 {
     if (powerState == 1)
     {
-        batteryCheck()
-        console.log("number button 3 pressed")
+        if (powerState == 1)
+        {
+            batteryCheck()
+            console.log("number button 3 pressed")
+            
+            if (operatorClicked == false)
+            {
+                number1 += 3;        
+                document.getElementById("screenTextBottom").textContent = number1;
+                
+            }
+
+            else if (operatorClicked == true)
+            {
+                number2 += 3;        
+                document.getElementById("screenTextBottom").textContent = number2;
+                
+            }
+        }
     }
 }
 
@@ -99,8 +190,23 @@ function button4Clicked()
 {
     if (powerState == 1)
     {
-        batteryCheck()
-        console.log("number button 4 pressed")
+        if (powerState == 1)
+        {
+            batteryCheck()
+            console.log("number button 4 pressed")
+            
+            if (operatorClicked == false)
+            {
+                number1 += 4;        
+                document.getElementById("screenTextBottom").textContent = number1;            
+            }
+
+            else if (operatorClicked == true)
+            {
+                number2 += 4;        
+                document.getElementById("screenTextBottom").textContent = number2;            
+            }
+        }
     }
 }
 
@@ -108,8 +214,25 @@ function button5Clicked()
 {
     if (powerState == 1)
     {
-        batteryCheck()
-        console.log("number button 5 pressed")
+        if (powerState == 1)
+        {
+            batteryCheck()
+            console.log("number button 5 pressed")
+            
+            if (operatorClicked == false)
+            {
+                number1 += 5;        
+                document.getElementById("screenTextBottom").textContent = number1;
+                
+            }
+
+            else if (operatorClicked == true)
+            {
+                number2 += 5;        
+                document.getElementById("screenTextBottom").textContent = number2;
+                
+            }
+        }
     }
 }
 
@@ -117,8 +240,23 @@ function button6Clicked()
 {
     if (powerState == 1)
     {
-        batteryCheck()
-        console.log("number button 6 pressed")
+        if (powerState == 1)
+        {
+            batteryCheck()
+            console.log("number button 6 pressed")
+            
+            if (operatorClicked == false)
+            {
+                number1 += 6;        
+                document.getElementById("screenTextBottom").textContent = number1;            
+            }
+
+            else if (operatorClicked == true)
+            {
+                number2 += 6;        
+                document.getElementById("screenTextBottom").textContent = number2;            
+            }
+        }
     }
 }
 
@@ -126,8 +264,23 @@ function button7Clicked()
 {
     if (powerState == 1)
     {
+        if (powerState == 1)
+        {
         batteryCheck()
         console.log("number button 7 pressed")
+        
+        if (operatorClicked == false)
+        {
+            number1 += 7;        
+            document.getElementById("screenTextBottom").textContent = number1;            
+        }
+
+        else if (operatorClicked == true)
+        {
+            number2 += 7;        
+            document.getElementById("screenTextBottom").textContent = number2;            
+        }
+        }
     }
 }
 
@@ -135,8 +288,23 @@ function button8Clicked()
 {
     if (powerState == 1)
     {
+        if (powerState == 1)
+        {
         batteryCheck()
         console.log("number button 8 pressed")
+        
+        if (operatorClicked == false)
+        {
+            number1 += 8;        
+            document.getElementById("screenTextBottom").textContent = number1;            
+        }
+
+        else if (operatorClicked == true)
+        {
+            number2 += 8;        
+            document.getElementById("screenTextBottom").textContent = number2;            
+        }
+        }
     }
 }
 
@@ -144,8 +312,23 @@ function button9Clicked()
 {
     if (powerState == 1)
     {
+        if (powerState == 1)
+        {
         batteryCheck()
         console.log("number button 9 pressed")
+        
+        if (operatorClicked == false)
+        {
+            number1 += 9;        
+            document.getElementById("screenTextBottom").textContent = number1;            
+        }
+
+        else if (operatorClicked == true)
+        {
+            number2 += 9;        
+            document.getElementById("screenTextBottom").textContent = number2;            
+        }
+        }
     }
 }
 
@@ -153,26 +336,46 @@ function button0Clicked()
 {
     if (powerState == 1)
     {
+        if (powerState == 1)
+        {
         batteryCheck()
         console.log("number button 0 pressed")
+        
+        if (operatorClicked == false)
+        {
+            number1 += 0;        
+            document.getElementById("screenTextBottom").textContent = number1;            
+        }
+
+        else if (operatorClicked == true)
+        {
+            number2 += 0;        
+            document.getElementById("screenTextBottom").textContent = number2;            
+        }
+        }
     }
 }
 
-function buttonPlusClicked()
+function buttonAddClicked()
+{
+
+    if (powerState == 1)
+    {
+        batteryCheck()
+        console.log("Add button pressed")
+        operatorUsed("+")
+        console.log(operator)
+    }
+}
+
+function buttonSubtractClicked()
 {
     if (powerState == 1)
     {
         batteryCheck()
-        console.log("Plus button pressed")
-    }
-}
-
-function buttonMinusClicked()
-{
-    if (powerState == 1)
-    {
-        batteryCheck()
-        console.log("minus button pressed")
+        console.log("Subtract button pressed")
+        operatorUsed("-")
+        console.log(operator)
     }
 }
 
@@ -182,6 +385,8 @@ function buttonMultiplyClicked()
     {
         batteryCheck()
         console.log("multiply button pressed")
+        operatorUsed("*")
+        console.log(operator)
     }
 }
 
@@ -191,6 +396,8 @@ function buttonDivideClicked()
     {
         batteryCheck()
         console.log("Divide button pressed")
+        operatorUsed("/")
+        console.log(operator)
     }
 }
 
@@ -199,7 +406,7 @@ function buttonEqualsClicked()
     if (powerState == 1)
     {
         batteryCheck()
-        console.log("Equals button pressed")
+        operate()
     }
 }
 
@@ -277,10 +484,11 @@ function powerButtonClicked()
         bootSound.currentTime = 0;
         bootSound.play();
         console.log("power on");
+
         
         document.getElementById('screenTextTop').textContent = "Kastlegate";
         setTimeout(() => {  document.getElementById('screenTextTop').textContent = ""; }, 2000);
-        setTimeout(() => {  document.getElementById('screenTextBottom').textContent = number3; }, 2000);
+        setTimeout(() => {  document.getElementById("screenTextBottom").textContent = defaultBottomNumber; }, 2000);
         
         powerState = 1;
     }
@@ -291,13 +499,14 @@ function powerButtonClicked()
     {
         document.getElementById('batteryLight').style.backgroundColor = "rgb(165, 164, 164)";
         powerState = 0;
+        number1 = "";
+        number2 = "";
         number3 = 0;
+        operatorClicked = false;
         document.getElementById('screenTextTop').textContent = "";
         document.getElementById('screenTextBottom').textContent = "";
         console.log("power off");
     }
-
-
 }
 
 //function for the reset button being clicked
@@ -308,14 +517,17 @@ function resetButtonClicked()
         document.getElementById('screenTextTop').textContent = "";
         document.getElementById('screenTextBottom').textContent = "";
         batteryLife = 0;
+        number1 = "";
+        number2 = "";
         number3 = 0;
+        operatorClicked = false;
         console.log("calculator reset");
 }
 
 
 function add(number1, number2)
 {
-    return number1 + number2;
+    return parseFloat(number1) + parseFloat(number2);
 }
 
 function subtract(number1, number2)
@@ -333,7 +545,3 @@ function divide(number1, number2)
     return number1 / number2;
 }
 
-console.log(add(30,2))
-console.log(subtract(1000,2))
-console.log(multiply(123456789,2))
-console.log(divide(30,2))
