@@ -47,7 +47,7 @@ body{
     width: 320px;
     background-color: rgb(209, 206, 206);
     margin-bottom: 10px;
-    /* box-shadow: 50px 50px 50px rgb(0, 0, 0); */
+    
 }
 
 /* container for the battery light and text */
@@ -61,7 +61,6 @@ body{
     width: 5px;
     height: 5px;
     background-color: rgb(165, 164, 164);
-    /* background-color: green; */
     border-radius: 5px 5px 5px 5px;
     margin-left: 20%;
 }
@@ -87,15 +86,6 @@ body{
     flex-direction: row;
     box-shadow: inset 0px 0px 7px #c7c7c7;
 }
-
-/* #screenDisplay{
-    background-color: rgb(5, 126, 1);    
-    width: 200px;
-    height: 135px;
-    margin-top: 10px;
-    margin-left: -3px;
-    
-} */
 
 /* Container holding the two divs that make up the top and bottom of the screen */
 #screenDisplayContainer{
@@ -144,13 +134,11 @@ body{
 
 /* container for the calculator buttons */
 #buttonHolder{
-    /* background-color: rgb(145, 145, 145); */
     margin: auto;
     width: 220px;
     flex-direction: row; 
     padding: 5px;
     padding-left: 15px;
-    /* padding-top: 25px;   */
     box-shadow: inset 0px 0px 5px #c7c7c7;
     border-radius: 20px 20px 20px 20px;
     margin-bottom: 30px;
@@ -159,7 +147,6 @@ body{
 .buttons{
     margin-bottom: 3px;
     background-color: #8b0162;
-    /* border: none; */
     color: white;
     width: 50px;
     text-align: center;
@@ -213,7 +200,6 @@ body{
     transform: rotate(-30deg);
     background-color: grey;   
     border-radius: 10px 10px 10px 10px;
-    /* box-shadow: 1px 1px 1px 6px #d3d2d2; */
     font-size: 50%;
     color: rgb(77, 52, 218);
     text-align: right;
@@ -235,7 +221,6 @@ body{
     background-color: grey;
     border-radius: 10px 10px 10px 10px;
     margin-left: 10px !important;
-    /* box-shadow: 1px 1px 1px 5px #d3d2d2; */
     font-size: 50%;
     color: rgb(77, 52, 218);    
     text-decoration: none;
